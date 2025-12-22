@@ -1,6 +1,6 @@
 package com.api.menu.repository;
 
-import com.api.menu.Prato;
+import com.api.menu.Prato.Prato;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -20,6 +20,6 @@ public interface PratoRepository extends JpaRepository<Prato, Long> {
     List<Prato> buscarPratosBaratos(@Param("precoMaximo") BigDecimal preco);
 
     @Query(value = "SELECT * FROM prato WHERE descricao LIKE CONCAT('%', :termo, '%')", nativeQuery = true)
-    List<Prato> buscarPorPratosComQueijo(@Param("termo")String termo);
+    List<Prato> buscarPorDescricao(@Param("termo")String descricao);
 }
 

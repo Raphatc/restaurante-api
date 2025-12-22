@@ -1,4 +1,4 @@
-package com.api.menu;
+package com.api.menu.Prato;
 
 import jakarta.persistence.*;
 
