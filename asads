@@ -1,0 +1,30 @@
+[33mcommit 788f6a04de34e841094be0fdb5be18ccca112826[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Merge: 5672be4 517e3ad
+Author: Rafael <rafa02102006@gmail.com>
+Date:   Mon Dec 22 17:24:25 2025 -0300
+
+    Adicionando o repositorio dos pedidos e organizando o repositorio dos pratos
+
+[33mcommit 5672be4a6b88108f5a532e85d3d8717d1af40ba6[m
+Author: Rafael <rafa02102006@gmail.com>
+Date:   Mon Dec 22 17:17:40 2025 -0300
+
+    Adicionei o respositorio de pedido e organizei o repositorio dos pratos
+
+[33mcommit 517e3adc50ebdbd45039a4d293dabe942cc63a1d[m
+Author: Rafael Torquato de Oliveira <144482813+Raphatc@users.noreply.github.com>
+Date:   Mon Dec 22 12:52:23 2025 -0300
+
+    Adicionando o README
+
+[33mcommit f1b2d884f6a35183db4384371e193352191ad87b[m
+Author: Rafael <rafa02102006@gmail.com>
+Date:   Mon Dec 22 12:45:49 2025 -0300
+
+    Tornando obrigatorio o preço e a quantidade ser maior que 0 e não podendo ser vazio
+
+[33mcommit ff4005043dded58b40db49dda85b3a1cadaabfb9[m
+Author: Rafael <rafa02102006@gmail.com>
+Date:   Mon Dec 22 12:38:20 2025 -0300
+
+    Api-resta
