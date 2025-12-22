@@ -1,6 +1,8 @@
 package com.api.menu;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,8 +22,10 @@ public class ItemPedido {
     @JoinColumn(name = "pedido_id")
     private Prato pedido;
 
-
+    @NotNull
+    @Positive
     private Integer quantidade;
+
     private String observacao;
 
 }

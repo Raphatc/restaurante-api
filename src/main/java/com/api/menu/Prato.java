@@ -2,6 +2,8 @@ package com.api.menu;
 
 import jakarta.persistence.*;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,6 +21,8 @@ public class Prato {
 
     private String descricao;
 
+    @NotNull
+    @Positive
     private BigDecimal preco;
 
     public Prato() {}
