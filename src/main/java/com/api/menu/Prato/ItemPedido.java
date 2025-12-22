@@ -20,7 +20,7 @@ public class ItemPedido {
 
     @ManyToOne
     @JoinColumn(name = "pedido_id")
-    private Prato pedido;
+    private Pedido pedido;
 
     @NotNull
     @Positive
