@@ -11,8 +11,8 @@ import java.util.List;
 public interface PedidoRepository extends JpaRepository<Pedido, Long> {
 
     @Query(value = "SELECT pedidos.* FROM pedidos " +
-            "JOIN itens_pedido ON pedidos.id = itens_pedido.pedido_id " +
-            "JOIN prato ON itens_pedido.prato_id = prato.id " +
+            "JOIN item_pedido ON pedidos.id = item_pedido.pedido_id " +
+            "JOIN prato ON item_pedido.prato_id = prato.id " +
             "WHERE prato.nome LIKE %:pedido%", nativeQuery = true)
     List<Pedido> buscarPorPedido(@Param("pedido") String pedido);
 

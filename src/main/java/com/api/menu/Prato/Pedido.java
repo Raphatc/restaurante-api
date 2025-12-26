@@ -3,7 +3,7 @@ package com.api.menu.Prato;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +11,9 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "pedidos")
-public class Pedido {
+public class Pedido implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
