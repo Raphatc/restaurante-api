@@ -1,0 +1,24 @@
+{
+  "name": "menu",
+  "version": "1.0.0",
+  "description": "Uma CRUD api rest em spring boot, é um sistema de restaurante que o garçom \"anota\" o pedido e a api salva no banco de dados SQL, e manda para a cozinha",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Raphatc/restaurante-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Raphatc/restaurante-api/issues"
+  },
+  "homepage": "https://github.com/Raphatc/restaurante-api#readme",
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}

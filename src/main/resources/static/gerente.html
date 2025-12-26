@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Gerente - Adicionar Prato</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            light: '#fdba74', // Laranja claro
+                            DEFAULT: '#ea580c', // Laranja padrão (cor de comida/fome)
+                            dark: '#c2410c',    // Laranja escuro
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 min-h-screen flex items-center justify-center p-4">
+
+<div class="bg-white w-full max-w-lg rounded-2xl shadow-xl overflow-hidden border border-slate-100">
+
+    <div class="bg-orange-50 p-6 text-center border-b border-orange-100">
+
+        <div class="text-5xl mb-3 animate-bounce">👨‍🍳</div>
+
+        <h1 class="text-brand-DEFAULT text-2xl font-bold tracking-wide">
+            Novo Prato
+        </h1>
+
+        <p class="text-orange-400 font-medium text-base mt-2">
+            Adicione deliciosas opções ao menu
+        </p>
+    </div>
+
+    <div class="p-8">
+        <form id="formPrato" onsubmit="cadastrarPrato(event)" class="space-y-6">
+
+            <div>
+                <label for="nome" class="block text-sm font-semibold text-slate-700 mb-2">Nome do Prato</label>
+                <input type="text" id="nome" required
+                       class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-brand-DEFAULT focus:ring-2 focus:ring-brand-light outline-none transition duration-200 placeholder-slate-400"
+                       placeholder="Ex: Espaguete à Carbonara">
+            </div>
+
+            <div>
+                <label for="descricao" class="block text-sm font-semibold text-slate-700 mb-2">Descrição</label>
+                <textarea id="descricao" rows="3"
+                          class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-brand-DEFAULT focus:ring-2 focus:ring-brand-light outline-none transition duration-200 placeholder-slate-400 resize-none"
+                          placeholder="Descreva os ingredientes e detalhes..."></textarea>
+            </div>
+
+            <div>
+                <label for="preco" class="block text-sm font-semibold text-slate-700 mb-2">Preço (R$)</label>
+                <div class="relative">
+                    <span class="absolute left-4 top-3.5 text-slate-500 font-medium">R$</span>
+                    <input type="number" id="preco" step="0.01" required
+                           class="w-full pl-12 pr-4 py-3 rounded-lg border border-slate-300 focus:border-brand-DEFAULT focus:ring-2 focus:ring-brand-light outline-none transition duration-200 placeholder-slate-400"
+                           placeholder="0.00">
+                </div>
+            </div>
+
+            <button type="submit"
+                    class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3.5 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 flex justify-center items-center gap-2">
+                <span>Salvar Prato no Menu</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
+                </svg>
+            </button>
+        </form>
+
+        <div id="mensagem" class="hidden mt-6 p-4 rounded-lg text-sm text-center font-medium animate-pulse">
+        </div>
+    </div>
+
+    <div class="bg-slate-50 p-4 text-center border-t border-slate-100">
+        <p class="text-xs text-slate-400">Sistema de Gestão de Restaurante v1.0</p>
+    </div>
+</div>
+
+<div class="bg-white w-full max-w-4xl rounded-2xl shadow-xl overflow-hidden border border-slate-100 mt-8 mb-10">
+
+    <div class="bg-slate-800 p-6 flex justify-between items-center">
+        <h2 class="text-white text-xl font-bold">📋 Cardápio Atual</h2>
+        <button onclick="carregarPratos()" class="text-xs text-slate-300 hover:text-white underline">Atualizar Lista</button>
+    </div>
+
+    <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+            <thead>
+            <tr class="bg-slate-100 text-slate-600 text-sm uppercase tracking-wider">
+                <th class="p-4 font-semibold border-b">ID</th>
+                <th class="p-4 font-semibold border-b">Nome</th>
+                <th class="p-4 font-semibold border-b">Descrição</th>
+                <th class="p-4 font-semibold border-b">Preço</th>
+                <th class="p-4 font-semibold border-b text-center">Ações</th>
+            </tr>
+            </thead>
+            <tbody id="tabela-pratos" class="text-sm text-slate-700 divide-y divide-slate-100">
+            <tr>
+                <td colspan="5" class="p-6 text-center text-slate-400">Carregando itens...</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script type="module" src="/js/gerente.js"></script>
+
+</body>
+</html>

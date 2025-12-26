@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "es6",
+    "strict": true,
+    "outDir": "./src/main/resources/static/js",
+    "rootDir": "./src/main/resources/static/ts"
+  },
+  "include": [
+    "src/main/resources/static/ts/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "target",
+    "**/*.spec.ts"
+  ]
+}
