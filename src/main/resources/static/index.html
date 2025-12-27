@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Restaurante - Início</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 min-h-screen flex flex-col items-center justify-center p-4">
+
+<div class="text-center mb-12 animate-fade-in-down">
+    <div class="text-6xl mb-4">🍔🥗🍝</div>
+    <h1 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+        Gusteau's <span class="text-orange-500">Manager</span>
+    </h1>
+    <p class="text-slate-400 mt-3 text-lg">Selecione o seu perfil de acesso</p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl">
+
+    <a href="/gerente.html" class="group relative bg-white hover:bg-orange-50 rounded-2xl p-8 shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:shadow-orange-500/20 cursor-pointer border border-transparent hover:border-orange-200">
+        <div class="absolute top-0 right-0 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">ADMIN</div>
+        <div class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">👨‍💼</div>
+        <h2 class="text-2xl font-bold text-slate-800 mb-2">Sou Gerente</h2>
+        <p class="text-slate-500 text-sm leading-relaxed">
+            Cadastre novos pratos, atualize preços e gira o cardápio do restaurante.
+        </p>
+        <div class="mt-6 flex items-center text-orange-600 font-bold text-sm">
+            Aceder Painel <span class="ml-2 group-hover:translate-x-1 transition">→</span>
+        </div>
+    </a>
+
+    <a href="/garcom.html" class="group relative bg-white hover:bg-blue-50 rounded-2xl p-8 shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:shadow-blue-500/20 cursor-pointer border border-transparent hover:border-blue-200">
+        <div class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">📝</div>
+        <h2 class="text-2xl font-bold text-slate-800 mb-2">Sou Garçom</h2>
+        <p class="text-slate-500 text-sm leading-relaxed">
+            Anote pedidos das mesas, adicione observações e envie para a cozinha.
+        </p>
+        <div class="mt-6 flex items-center text-blue-600 font-bold text-sm">
+            Novo Pedido <span class="ml-2 group-hover:translate-x-1 transition">→</span>
+        </div>
+    </a>
+
+    <a href="/cozinha.html" class="group relative bg-white hover:bg-yellow-50 rounded-2xl p-8 shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:shadow-yellow-500/20 cursor-pointer border border-transparent hover:border-yellow-200">
+        <div class="absolute top-4 right-4 animate-pulse">
+                <span class="flex h-3 w-3">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                </span>
+        </div>
+        <div class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">👨‍🍳</div>
+        <h2 class="text-2xl font-bold text-slate-800 mb-2">Cozinha</h2>
+        <p class="text-slate-500 text-sm leading-relaxed">
+            Visualize a fila de pedidos em tempo real e marque como pronto.
+        </p>
+        <div class="mt-6 flex items-center text-yellow-600 font-bold text-sm">
+            Ver Monitor KDS <span class="ml-2 group-hover:translate-x-1 transition">→</span>
+        </div>
+    </a>
+
+</div>
+
+<footer class="mt-16 text-slate-600 text-sm">
+    <p>© 2025 Sistema de Restaurante • Desenvolvido com Spring Boot & Tailwind</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cozinha - Monitor de Pedidos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 min-h-screen p-6 text-slate-100">
+
+<div class="flex justify-between items-center mb-8 border-b border-slate-700 pb-4">
+    <div class="flex items-center gap-4">
+        <div class="text-5xl animate-pulse">🔥</div>
+        <div>
+            <h1 class="text-3xl font-bold text-white">Fila de Produção</h1>
+            <p class="text-slate-400">Os pedidos aparecem automaticamente aqui</p>
+        </div>
+    </div>
+
+    <div class="text-right">
+        <p class="text-sm text-slate-400">Atualizado em:</p>
+        <p id="relogio" class="text-xl font-mono text-green-400">--:--:--</p>
+    </div>
+</div>
+
+<div id="mural-pedidos" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+    <div class="col-span-full text-center text-slate-600 mt-20">
+        <p class="text-6xl mb-4">💤</p>
+        <p class="text-xl">A aguardar novos pedidos...</p>
+    </div>
+
+</div>
+
+<script type="module" src="/js/cozinha.js"></script>
+</body>
+</html>

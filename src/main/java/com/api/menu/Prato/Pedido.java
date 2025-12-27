@@ -1,6 +1,8 @@
 package com.api.menu.Prato;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.Getter;
 import lombok.Setter;
 import java.io.Serializable;
@@ -18,6 +20,10 @@ public class Pedido implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotNull
+    @Positive
+    private Integer mesa;
 
     // A anotação @OneToMany indica que um Pedido tem UMA lista de MUITOS itens.
     // "mappedBy" avisa ao Java que o "dono" do relacionamento é o campo "pedido" lá na outra classe.

@@ -10,7 +10,7 @@
             theme: {
                 extend: {
                     colors: {
-                        brand: { DEFAULT: '#ea580c' } // Laranja
+                        brand: { DEFAULT: '#ea580c' }
                     }
                 }
             }
@@ -26,15 +26,22 @@
             <div class="text-3xl">📝</div>
             <div>
                 <h1 class="text-2xl font-bold text-slate-800">Anotar Pedido</h1>
-                <p class="text-sm text-slate-500">Selecione os itens do cliente</p>
+                <p class="text-sm text-slate-500">Selecione a mesa e os itens</p>
             </div>
         </div>
 
         <form id="form-item" onsubmit="adicionarItem(event)" class="space-y-4">
 
+            <div class="bg-orange-50 p-4 rounded-lg border border-orange-100">
+                <label class="block text-sm font-bold text-slate-800 mb-1">📍 Número da Mesa</label>
+                <input type="number" id="numero-mesa" min="1" placeholder="Ex: 10" required
+                       class="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-DEFAULT outline-none text-lg font-bold text-center text-brand-DEFAULT">
+            </div>
+
+            <hr class="border-slate-100">
+
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-1">Escolher Prato</label>
-
                 <div class="relative mb-2">
                     <span class="absolute left-3 top-2.5 text-slate-400">🔍</span>
                     <input type="text" id="filtro-prato" placeholder="Filtrar por nome..."
@@ -69,13 +76,11 @@
     </div>
 
     <div class="bg-white p-6 rounded-2xl shadow-lg flex flex-col justify-between h-[600px]">
-
         <div>
             <h2 class="text-xl font-bold text-slate-800 mb-4 flex justify-between items-center">
                 <span>Resumo da Mesa</span>
                 <span id="contador-itens" class="bg-orange-100 text-brand-DEFAULT text-xs px-2 py-1 rounded-full">0 itens</span>
             </h2>
-
             <div class="overflow-y-auto h-[400px] pr-2 space-y-3" id="lista-pedido">
                 <div class="text-center text-slate-400 mt-10">
                     <p class="text-4xl mb-2">🍽️</p>

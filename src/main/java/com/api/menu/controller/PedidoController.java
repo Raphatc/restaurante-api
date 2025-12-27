@@ -13,6 +13,8 @@ public class PedidoController {
 
     @Autowired
     private PedidoService pedidoService; // O Controller fala com o Service, não com o Repository!
+    @Autowired
+    private com.api.menu.repository.PedidoRepository pedidoRepository;
 
     // 1. FAZER UM NOVO PEDIDO
     // O cliente envia os dados e nós passamos para o Service cadastrar
@@ -33,5 +35,9 @@ public class PedidoController {
     @GetMapping("/busca")
     public List<Pedido> buscarPorItem(@RequestParam String nome) {
         return pedidoService.buscarPorNomeDoItem(nome);
+    }
+    @DeleteMapping("/{id}")
+    public void deletarPedido(@PathVariable Long id) {
+        pedidoRepository.deleteById(id);
     }
 }

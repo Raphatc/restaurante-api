@@ -7,17 +7,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-// --- ESTADO ---
 let carrinho = [];
-let cardapioDisponivel = []; // Lista completa para referência
-// 1. CARREGAR E CONFIGURAR
+let cardapioDisponivel = [];
+// 1. INICIALIZAÇÃO
 document.addEventListener("DOMContentLoaded", () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const response = yield fetch('/Prato');
         cardapioDisponivel = yield response.json();
-        // Renderiza lista inicial
         renderizarOpcoes(cardapioDisponivel);
-        // Configura o Filtro
+        // Filtro de pesquisa
         const filtroInput = document.getElementById("filtro-prato");
         filtroInput.addEventListener("input", () => {
             const termo = filtroInput.value.toLowerCase();
@@ -27,10 +25,9 @@ document.addEventListener("DOMContentLoaded", () => __awaiter(void 0, void 0, vo
     }
     catch (error) {
         console.error("Erro ao carregar cardápio", error);
-        alert("Erro ao conectar com a cozinha.");
     }
 }));
-// FUNÇÃO AUXILIAR: Desenha as opções do <select>
+// AUXILIAR: Renderiza o <select>
 function renderizarOpcoes(listaPratos) {
     const select = document.getElementById("select-prato");
     select.innerHTML = "";
@@ -63,7 +60,6 @@ export function adicionarItem(event) {
     const obsInput = document.getElementById("observacao");
     const filtroInput = document.getElementById("filtro-prato");
     const pratoId = parseInt(select.value);
-    // Busca na lista completa pelo ID
     const pratoSelecionado = cardapioDisponivel.find(p => p.id === pratoId);
     if (!pratoSelecionado) {
         alert("Selecione um prato válido!");
@@ -78,11 +74,10 @@ export function adicionarItem(event) {
     };
     carrinho.push(novoItem);
     atualizarVisualCarrinho();
-    // Resetar campos e filtro
     qtdInput.value = "1";
     obsInput.value = "";
     filtroInput.value = "";
-    renderizarOpcoes(cardapioDisponivel); // Mostra todos os pratos de novo
+    renderizarOpcoes(cardapioDisponivel);
     select.value = "";
 }
 // 3. ATUALIZAR VISUAL DO CARRINHO
@@ -112,7 +107,6 @@ function atualizarVisualCarrinho() {
     });
     totalSpan.innerText = `R$ ${total.toFixed(2)}`;
     contadorSpan.innerText = `${carrinho.length} itens`;
-    // Lógica do botão de enviar
     if (carrinho.length > 0) {
         btnEnviar.disabled = false;
         btnEnviar.classList.remove("opacity-50", "cursor-not-allowed");
@@ -127,16 +121,27 @@ export function removerItem(index) {
     carrinho.splice(index, 1);
     atualizarVisualCarrinho();
 }
-// 5. ENVIAR PARA A COZINHA
+// 5. ENVIAR PARA A COZINHA (COM MESA)
 export function enviarPedidoParaCozinha() {
     return __awaiter(this, void 0, void 0, function* () {
         if (carrinho.length === 0)
             return;
+        // CAPTURA A MESA AQUI
+        const mesaInput = document.getElementById("numero-mesa");
+        const mesaNumero = parseInt(mesaInput.value);
+        if (!mesaNumero || mesaNumero <= 0) {
+            alert("⚠️ Por favor, informe o número da MESA antes de enviar!");
+            mesaInput.focus();
+            mesaInput.classList.add("ring-4", "ring-red-400"); // Destaque visual de erro
+            setTimeout(() => mesaInput.classList.remove("ring-4", "ring-red-400"), 2000);
+            return;
+        }
         const btn = document.getElementById("btn-enviar");
         const textoOriginal = btn.innerHTML;
         btn.innerHTML = "🚀 Enviando...";
         btn.disabled = true;
         const pedidoFinal = {
+            mesa: mesaNumero, // Envia a mesa
             itens: carrinho.map(item => ({
                 quantidade: item.quantidade,
                 observacao: item.observacao,
@@ -150,9 +155,10 @@ export function enviarPedidoParaCozinha() {
                 body: JSON.stringify(pedidoFinal)
             });
             if (response.ok) {
-                alert("✅ Pedido enviado para a cozinha com sucesso!");
+                alert(`✅ Pedido da Mesa ${mesaNumero} enviado com sucesso!`);
                 carrinho = [];
                 atualizarVisualCarrinho();
+                mesaInput.value = ""; // Limpa a mesa
             }
             else {
                 alert("❌ Erro ao enviar pedido.");
@@ -168,7 +174,6 @@ export function enviarPedidoParaCozinha() {
         }
     });
 }
-// Exportar funções para o HTML
 window.adicionarItem = adicionarItem;
 window.removerItem = removerItem;
 window.enviarPedidoParaCozinha = enviarPedidoParaCozinha;
